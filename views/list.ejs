@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="container">
+        <div class="mt-4">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% list.forEach(function (item) { %>
+                  <tr>
+                    <td><%= item.Product %></td>
+                    <td><%= item.Brand %></td>
+                    <td><%= item.Size %></td>
+                    <td><%= item.Color %></td>
+                    <td><%= item.Price %></td>
+                    <td><%= item.Quantity %></td>
+                    <td> 
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#btn-detele-item" data-id="<%= item.ID %>">Delete</button>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="btn-detele-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Do you want Delete this item?
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+</body>
+</html>
+<form method="POST" name="delete-item"> </form>
+<script>
+    var itemId;
+    var deleteform = document.forms['delete-item'];
+    var btnDeleteItem = document.getElementById('btn-detele-item');
+
+    $('#btn-detele-item').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    itemId = button.data('id');
+    });
+
+    btnDeleteItem.onclick = function(){
+        deleteform.action = '/store/' + itemId + '?_method=DELETE';
+        deleteform.submit();
+    };
+</script>

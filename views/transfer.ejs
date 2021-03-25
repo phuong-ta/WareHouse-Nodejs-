@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <h2>This is transfer page</h2>
+    <div class="container">
+        <div class="mt-4">
+            <form>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">transfer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% list.forEach(function (item) { %>
+                  <tr>
+                    <td><%= item.Product %></td>
+                    <td><%= item.Brand %></td>
+                    <td><%= item.Size %></td>
+                    <td><%= item.Color %></td>
+                    <td><%= item.Price %></td>
+                    <td><%= item.Quantity %></td>
+                    <td> 
+                      <input type="number">
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary ml auto">Transfer</button>
+            </form>
+        </div>
+    </div>
+   
+    <%- include('partials/footer') %>
+</body>
+</html>

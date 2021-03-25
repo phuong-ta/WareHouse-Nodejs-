@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <h2>This is add new item page</h2>
+
+    <div class="container">
+        <div class="mt-4">
+            <form class="col-8 border border-dark rounded p-3 m-auto" action="/store/store" method="POST">
+
+                <div class="form-group">
+                    <label for="product">Product</label>
+                    <input type="text" class="form-control" name="product" id="product" placeholder=" Takki">
+                </div>
+
+                <div class="form-group">
+                    <label for="brand">Brand</label>
+                    <input type="text" class="form-control" name="brand" id="brand" placeholder="Tommy">
+                </div>
+
+                <div class="form-group">
+                    <label for="size">Size</label>
+                    <input type="number" class="form-control" name="size" id="size" placeholder="44">
+                </div>
+
+                <div class="form-group">
+                    <label for="color">Color</label>
+                    <input type="text" class="form-control" name="color" id="color" placeholder="Yellow">
+                </div>
+               
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" name="price" id="price" placeholder=" 15.20">
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="quantity" placeholder=" 30">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>   
+        </div> 
+    </div>
+
+   
+    <%- include('partials/footer') %>
+</body>
+</html>
